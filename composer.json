@@ -1,0 +1,29 @@
+{
+  "name": "eseperio/yii2-splide",
+  "description": "Yii2 wrapper for Spidejs slider",
+  "type": "yii2-extension",
+  "require": {
+    "yiisoft/yii2": "2.*",
+    "npm-asset/splidejs--splide": "2.*",
+    "npm-asset/splidejs--splide-extension-video": "^0",
+    "npm-asset/splidejs--splide-extension-url-hash": "^0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "E.Alamo",
+      "email": "erosdelalamo@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "eseperio\\splide\\": "./src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
