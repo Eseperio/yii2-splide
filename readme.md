@@ -39,51 +39,51 @@ All options of Splide can be defined through widget properties
 
 |Property|Description|
 |--------|-----------|
-|*type*|Determine a slider type.|
-|*rewind*|Whether to rewind a slider before the first slide or after the last one.|
-|*speed*|Transition speed in milliseconds.|
-|*rewindSpeed*|Transition speed on rewind in milliseconds.|
-|*waitForTransition*|Whether to prevent any actions while a slider is transitioning.|
-|*width*|Define slider max width.|
-|*height*|Define slider height.|
-|*fixedWidth*|Fix width of slides.|
-|*fixedHeight*|Fix height of slides.|
-|*heightRatio*|Determine height of slides by ratio to a slider width.|
-|*autoWidth*|If true, slide width will be determined by the element width itself. This is for a horizontal slider.|
-|*autoHeight*|If true, slide height will be determined by the element height itself. This is for a vertical slider.|
-|*perPage*|Determine how many slides should be displayed per page.|
-|*perMove*|Determine how many slides should be moved when a slider goes to next or previous page.|
-|*clones*|Manually determine how many clones should be generated on one side.|
-|*start*|Start index.|
-|*focus*|Determine which slide should be focused.|
-|*gap*|Gap between slides.|
-|*padding*|Set padding-left/right in horizontal mode or padding-top/bottom in vertical one.|
-|*easing*|Animation timing function for CSS transition.|
-|*arrows*|Whether to append arrows.|
-|*arrowPath*|Change the arrow SVG path.|
-|*pagination*|Whether to append pagination(indicator dots).|
-|*autoplay*|Whether to enable autoplay.|
-|*interval*|Autoplay interval in milliseconds.|
-|*pauseOnHover*|Whether to stop autoplay while a slider is hovered.|
-|*pauseOnFocus*|Whether to stop autoplay while a slider elements are focused.|
-|*resetProgress*|Whether to reset progress of the autoplay timer when resumed.|
-|*lazyLoad*|Enable lazy load for images.|
-|*preloadPages*|Determine how many pages around an active slide should be loaded beforehand. This only works the lazyLoad option is “nearby”.|
-|*keyboard*|Whether to control a slider via keyboard.|
-|*drag*|Whether to allow mouse drag and touch swipe.|
-|*dragAngleThreshold*|The angle threshold for drag.|
-|*swipeDistanceThreshold*|Distance threshold for determining if the action is “flick” or “swipe”.|
-|*flickVelocityThreshold*|Velocity threshold for determining if the action is “flick” or “swipe”.|
-|*flickPower*|Determine power of flick. The larger number this is, the farther a slider runs by flick.|
-|*flickMaxPages*|Limit a number of pages to move by flick.|
-|*direction*|Slider direction.|
-|*cover*|Whether to convert an img src to background-image of its parent element. height, fixedHeight or heightRatio is required.|
-|*accessibility*|Whether to enable accessibility(aria and screen reader texts) or not.|
-|*slideFocus*|Whether to add tabindex=”0″ to visible slides or not.|
-|*isNavigation*|Determine if a slider is navigation for another.|
-|*trimSpace*|Whether to trim spaces before the first slide or after the last one.|
-|*updateOnMove*|If true, is-active class added to the slide element before transition.|
-|*throttle*|Throttle duration for the resize event.|
-|*breakpoints*|Breakpoints definitions.|
-|*classes*|Collection of class names.|
-|*i18n*|Collection of texts for i18n.|
+|**type**|Determine a slider type.|
+|**rewind**|Whether to rewind a slider before the first slide or after the last one.|
+|**speed**|Transition speed in milliseconds.|
+|**rewindSpeed**|Transition speed on rewind in milliseconds.|
+|**waitForTransition**|Whether to prevent any actions while a slider is transitioning.|
+|**width**|Define slider max width.|
+|**height**|Define slider height.|
+|**fixedWidth**|Fix width of slides.|
+|**fixedHeight**|Fix height of slides.|
+|**heightRatio**|Determine height of slides by ratio to a slider width.|
+|**autoWidth**|If true, slide width will be determined by the element width itself. This is for a horizontal slider.|
+|**autoHeight**|If true, slide height will be determined by the element height itself. This is for a vertical slider.|
+|**perPage**|Determine how many slides should be displayed per page.|
+|**perMove**|Determine how many slides should be moved when a slider goes to next or previous page.|
+|**clones**|Manually determine how many clones should be generated on one side.|
+|**start**|Start index.|
+|**focus**|Determine which slide should be focused.|
+|**gap**|Gap between slides.|
+|**padding**|Set padding-left/right in horizontal mode or padding-top/bottom in vertical one.|
+|**easing**|Animation timing function for CSS transition.|
+|**arrows**|Whether to append arrows.|
+|**arrowPath**|Change the arrow SVG path.|
+|**pagination**|Whether to append pagination(indicator dots).|
+|**autoplay**|Whether to enable autoplay.|
+|**interval**|Autoplay interval in milliseconds.|
+|**pauseOnHover**|Whether to stop autoplay while a slider is hovered.|
+|**pauseOnFocus**|Whether to stop autoplay while a slider elements are focused.|
+|**resetProgress**|Whether to reset progress of the autoplay timer when resumed.|
+|**lazyLoad**|Enable lazy load for images.|
+|**preloadPages**|Determine how many pages around an active slide should be loaded beforehand. This only works the lazyLoad option is “nearby”.|
+|**keyboard**|Whether to control a slider via keyboard.|
+|**drag**|Whether to allow mouse drag and touch swipe.|
+|**dragAngleThreshold**|The angle threshold for drag.|
+|**swipeDistanceThreshold**|Distance threshold for determining if the action is “flick” or “swipe”.|
+|**flickVelocityThreshold**|Velocity threshold for determining if the action is “flick” or “swipe”.|
+|**flickPower**|Determine power of flick. The larger number this is, the farther a slider runs by flick.|
+|**flickMaxPages**|Limit a number of pages to move by flick.|
+|**direction**|Slider direction.|
+|**cover**|Whether to convert an img src to background-image of its parent element. height, fixedHeight or heightRatio is required.|
+|**accessibility**|Whether to enable accessibility(aria and screen reader texts) or not.|
+|**slideFocus**|Whether to add tabindex=”0″ to visible slides or not.|
+|**isNavigation**|Determine if a slider is navigation for another.|
+|**trimSpace**|Whether to trim spaces before the first slide or after the last one.|
+|**updateOnMove**|If true, is-active class added to the slide element before transition.|
+|**throttle**|Throttle duration for the resize event.|
+|**breakpoints**|Breakpoints definitions.|
+|**classes**|Collection of class names.|
+|**i18n**|Collection of texts for i18n.|
