@@ -5,6 +5,8 @@ namespace eseperio\splide\widgets;
 
 
 use eseperio\admintheme\helpers\Html;
+use eseperio\proshop\common\helpers\ArrayHelper;
+use yii\base\NotSupportedException;
 use yii\base\Widget;
 use yii\helpers\Json;
 
@@ -362,6 +364,7 @@ class Splide extends Widget
         $html .= Html::beginTag('ul', ['class' => 'splide__list']);
 
         foreach ($this->items as $item) {
+            $html = $this->renderItem($item);
 
         }
 
@@ -369,5 +372,29 @@ class Splide extends Widget
         $html .= Html::endTag('div');
 
         return $html;
+    }
+
+    /**
+     * @param $item
+     * @param string $html
+     * @return string|null
+     * @throws NotSupportedException
+     */
+    private function renderItem($item, string $html): string
+    {
+        if (!isset($item['type']) || $item->type == self::TYPE_IMAGE) {
+            return Html::img(ArrayHelper::getValue($item, 'url'));
+        } else {
+            switch ($item->type) {
+                case self::TYPE_VIDEO:
+                    throw new NotSupportedException('Video in slider is not yet supported by yii2-splide wrapper.');
+                    break;
+                case self::TYPE_GRID:
+                    throw new NotSupportedException('Grid in slider is not yet supported by yii2-splide wrapper.');
+                    break;
+            }
+        }
+
+        return null;
     }
 }
