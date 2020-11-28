@@ -4,12 +4,38 @@
 namespace eseperio\splide\widgets;
 
 
+use eseperio\admintheme\helpers\Html;
 use yii\base\Widget;
 use yii\helpers\Json;
 
 class Splide extends Widget
 {
 
+    const TYPE_VIDEO = 1;
+    const TYPE_IMAGE = 2;
+    const TYPE_GRID = 3;
+
+    /**
+     * Colecction of items to be rendered.
+     * ```PHP
+     *   $items = [
+     *      [
+     *          'url' => 'http://someurl.com/image.jpg'
+     *      ],
+     *      [
+     *          'url' => ['some/yii2urlformat', 'param1' => 'example']
+     *      ],
+     *      [
+     *          'type'=> Splide::TYPE_VIDEO,
+     *          'url'=> 'http://youtube.com/xxxxxxxx',
+     *          'poster'=> 'http://posterurl' // Optional. Can be in yii2 url format
+     *      ]
+     *  ];
+     * ```
+     *
+     * @var array
+     */
+    public $items = [];
     /**
      * Determine a slider type.
      **/
@@ -260,15 +286,88 @@ class Splide extends Widget
     public function registerClientScript()
     {
         $id = $this->grid->options['id'];
-        $options = Json::encode([
-
-        ]);
+        $params = [
+            'type' => $this->type,
+            'rewind' => $this->rewind,
+            'speed' => $this->speed,
+            'rewindSpeed' => $this->rewindSpeed,
+            'waitForTransition' => $this->waitForTransition,
+            'width' => $this->width,
+            'height' => $this->height,
+            'fixedWidth' => $this->fixedWidth,
+            'fixedHeight' => $this->fixedHeight,
+            'heightRatio' => $this->heightRatio,
+            'autoWidth' => $this->autoWidth,
+            'autoHeight' => $this->autoHeight,
+            'perPage' => $this->perPage,
+            'perMove' => $this->perMove,
+            'clones' => $this->clones,
+            'start' => $this->start,
+            'focus' => $this->focus,
+            'gap' => $this->gap,
+            'padding' => $this->padding,
+            'easing' => $this->easing,
+            'arrows' => $this->arrows,
+            'arrowPath' => $this->arrowPath,
+            'pagination' => $this->pagination,
+            'autoplay' => $this->autoplay, 'interval' => $this->interval,
+            'pauseOnHover' => $this->pauseOnHover,
+            'pauseOnFocus' => $this->pauseOnFocus,
+            'resetProgress' => $this->resetProgress,
+            'lazyLoad' => $this->lazyLoad,
+            'preloadPages' => $this->preloadPages,
+            'keyboard' => $this->keyboard,
+            'drag' => $this->drag,
+            'dragAngleThreshold' => $this->dragAngleThreshold,
+            'swipeDistanceThreshold' => $this->swipeDistanceThreshold,
+            'flickVelocityThreshold' => $this->flickVelocityThreshold,
+            'flickPower' => $this->flickPower,
+            'flickMaxPages' => $this->flickMaxPages,
+            'direction' => $this->direction,
+            'cover' => $this->cover,
+            'accessibility' => $this->accessibility,
+            'slideFocus' => $this->slideFocus,
+            'isNavigation' => $this->isNavigation,
+            'trimSpace' => $this->trimSpace,
+            'updateOnMove' => $this->updateOnMove,
+            'throttle' => $this->throttle,
+            'breakpoints' => $this->breakpoints,
+            'classes' => $this->classes,
+            'i18n' => $this->i18n
+        ];
+        $paramsWithValue = array_filter($params, function ($value) {
+            return is_null($value);
+        });
+        $options = Json::encode($paramsWithValue);
         $this->getView()
             ->registerJs("new Splide('#$id',$options).mount();");
     }
 
     public function run()
     {
+        $html = Html::beginTag('div', [
+            'id' => $this->id
+        ]);
 
+        $html .= $this->renderItems();
+        $html .= Html::endTag('div');
+
+        return $html;
+
+    }
+
+    private function renderItems()
+    {
+        $html = Html::beginTag('div', ['class' => 'splide__track']);
+        $html .= Html::beginTag('ul', ['class' => 'splide__list']);
+
+        foreach ($this->items as $item) {
+
+        }
+
+        $html .= Html::endTag('ul');
+        $html .= Html::endTag('div');
+
+        return $html;
     }
 }
