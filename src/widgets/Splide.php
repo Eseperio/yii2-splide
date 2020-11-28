@@ -364,7 +364,8 @@ class Splide extends Widget
         $html .= Html::beginTag('ul', ['class' => 'splide__list']);
 
         foreach ($this->items as $item) {
-            $html = $this->renderItem($item);
+
+            $html .= Html::tag('li', $this->renderItem($item), ['class' => 'splide__slide']);
 
         }
 
@@ -380,7 +381,7 @@ class Splide extends Widget
      * @return string|null
      * @throws NotSupportedException
      */
-    private function renderItem($item, string $html): string
+    private function renderItem($item): string
     {
         if (!isset($item['type']) || $item->type == self::TYPE_IMAGE) {
             return Html::img(ArrayHelper::getValue($item, 'url'));
