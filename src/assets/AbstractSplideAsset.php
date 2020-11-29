@@ -4,7 +4,9 @@
 namespace eseperio\splide\assets;
 
 
-abstract class AbstractSplideAsset
+use yii\web\AssetBundle;
+
+abstract class AbstractSplideAsset extends AssetBundle
 {
     public $sourcePath = "@npm/splidejs--splide/dist";
 

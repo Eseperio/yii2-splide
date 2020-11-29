@@ -6,17 +6,26 @@ namespace eseperio\splide\widgets;
 
 use eseperio\admintheme\helpers\Html;
 use eseperio\proshop\common\helpers\ArrayHelper;
+use eseperio\splide\assets\SplideAsset;
 use yii\base\NotSupportedException;
 use yii\base\Widget;
 use yii\helpers\Json;
 
+/**
+ * Class Splide
+ * @package eseperio\splide\widgets
+ */
 class Splide extends Widget
 {
 
+    /**
+     *
+     */
     const TYPE_VIDEO = 1;
     const TYPE_IMAGE = 2;
     const TYPE_GRID = 3;
-
+    const TYPE_HTML = 4;
+    public static $autoIdPrefix = 'splide';
     /**
      * Colecction of items to be rendered.
      * ```PHP
@@ -280,6 +289,24 @@ class Splide extends Widget
      **/
     public $i18n;
 
+    /**
+     * @return string
+     * @throws NotSupportedException
+     */
+    public function run()
+    {
+        $this->registerClientScript();
+        $html = Html::beginTag('div', [
+            'id' => $this->id,
+            'class'=> 'splide'
+        ]).PHP_EOL;
+
+        $html .= $this->renderItems();
+        $html .= Html::endTag('div');
+
+        return $html;
+
+    }
 
     /**
      * Registers the needed JavaScript.
@@ -287,7 +314,7 @@ class Splide extends Widget
      */
     public function registerClientScript()
     {
-        $id = $this->grid->options['id'];
+        $this->getView()->registerAssetBundle(SplideAsset::class);
         $params = [
             'type' => $this->type,
             'rewind' => $this->rewind,
@@ -338,34 +365,24 @@ class Splide extends Widget
             'i18n' => $this->i18n
         ];
         $paramsWithValue = array_filter($params, function ($value) {
-            return is_null($value);
+            return !is_null($value);
         });
         $options = Json::encode($paramsWithValue);
-        $this->getView()
-            ->registerJs("new Splide('#$id',$options).mount();");
+        $this->getView()->registerJs("let splide{$this->id} = new Splide('#{$this->id}',$options).mount();");
     }
 
-    public function run()
-    {
-        $html = Html::beginTag('div', [
-            'id' => $this->id
-        ]);
-
-        $html .= $this->renderItems();
-        $html .= Html::endTag('div');
-
-        return $html;
-
-    }
-
+    /**
+     * @return string
+     * @throws NotSupportedException
+     */
     private function renderItems()
     {
-        $html = Html::beginTag('div', ['class' => 'splide__track']);
-        $html .= Html::beginTag('ul', ['class' => 'splide__list']);
+        $html = Html::beginTag('div', ['class' => 'splide__track']) . PHP_EOL;
+        $html .= Html::beginTag('ul', ['class' => 'splide__list']) . PHP_EOL;
 
         foreach ($this->items as $item) {
 
-            $html .= Html::tag('li', $this->renderItem($item), ['class' => 'splide__slide']);
+            $html .= Html::tag('li', $this->renderItem($item), ['class' => 'splide__slide']).PHP_EOL;
 
         }
 
@@ -381,17 +398,21 @@ class Splide extends Widget
      * @return string|null
      * @throws NotSupportedException
      */
-    private function renderItem($item): string
+    private function renderItem($item)
     {
-        if (!isset($item['type']) || $item->type == self::TYPE_IMAGE) {
+
+        if (!isset($item['type']) || $item['type'] == self::TYPE_IMAGE) {
             return Html::img(ArrayHelper::getValue($item, 'url'));
         } else {
-            switch ($item->type) {
+            switch ($item['type']) {
                 case self::TYPE_VIDEO:
                     throw new NotSupportedException('Video in slider is not yet supported by yii2-splide wrapper.');
                     break;
                 case self::TYPE_GRID:
                     throw new NotSupportedException('Grid in slider is not yet supported by yii2-splide wrapper.');
+                    break;
+                case self::TYPE_HTML:
+                    return $item->html;
                     break;
             }
         }
