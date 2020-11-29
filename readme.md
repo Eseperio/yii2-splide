@@ -11,8 +11,10 @@ Using composer:
 
 ## Usage
 
-### Widget
+### Widgets
 
+There are two widgets. The former, a simple Splide slide, while the latter is a combination of two Splide slider for creating
+a carousel with thumbnail navigation (See [thumbnail slider](https://splidejs.com/thumbnail-slider/))
 ```PHP
 echo Splide::widget([
     'items' => [
@@ -30,6 +32,13 @@ echo Splide::widget([
                ],
    
 ]);
+```
+
+** Thumbnail slider **
+```php
+echo \eseperio\splide\widgets\SplideThumbnailCarousel::widget([
+                    'items' => $items
+                ]);
 ```
 
 ### Options
