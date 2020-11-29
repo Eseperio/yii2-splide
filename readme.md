@@ -34,7 +34,8 @@ echo Splide::widget([
 ]);
 ```
 
-** Thumbnail slider **
+**Thumbnail slider**
+
 ```php
 echo \eseperio\splide\widgets\SplideThumbnailCarousel::widget([
                     'items' => $items
