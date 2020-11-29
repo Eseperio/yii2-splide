@@ -2,6 +2,16 @@
  
 A yii2 wrapper for [SplideJs slider](https://github.com/Splidejs/splide).
 
+## License 
+MIT license. See [license](license.md)
+## Contents
+- Assets
+    - Asset bundle with main styles (SplideCoreAsset)
+    - Asset bundle with main styles and default theme (SplideAsset)
+- Widgets
+    - Splide: Widget to render a splide slider
+    - SplideThumbnailCarousel: Renders two sliders synced, one for main slider and other for thumbnails. 
+
 ## Installation:
 
 Using composer:
@@ -15,6 +25,8 @@ Using composer:
 
 There are two widgets. The former, a simple Splide slide, while the latter is a combination of two Splide slider for creating
 a carousel with thumbnail navigation (See [thumbnail slider](https://splidejs.com/thumbnail-slider/))
+
+    Video and grid not yet supported in current version of the wapper.
 ```PHP
 echo Splide::widget([
     'items' => [
@@ -28,6 +40,10 @@ echo Splide::widget([
                        'type'=> Splide::TYPE_VIDEO,
                        'url'=> 'http://youtube.com/xxxxxxxx',
                        'poster'=> 'http://posterurl' // Optional. Can be in yii2 url format
+                   ],
+                    [
+                       'type'=> Splide::TYPE_HTML,
+                       'html'=> 'htmlcodegoeshere',
                    ]
                ],
    
