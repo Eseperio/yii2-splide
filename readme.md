@@ -4,7 +4,7 @@ A yii2 wrapper for [SplideJs slider](https://github.com/Splidejs/splide).
 
 ## License 
 MIT license. See [license](license.md)
-## Contents
+## Content
 - Assets
     - Asset bundle with main styles (SplideCoreAsset)
     - Asset bundle with main styles and default theme (SplideAsset)
