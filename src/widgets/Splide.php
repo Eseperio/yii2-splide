@@ -48,6 +48,14 @@ class Splide extends Widget
      */
     public $items = [];
     /**
+     * @var string|null Used to sync sliders. Set with the id of the splide you want to link. See Splide sliders syncing
+     */
+    public $syncWith;
+    /**
+     * @var bool Defaults to `true`. Whether call mount on slider. Set to false in primary slider when syncing sliders
+     */
+    public $mount = true;
+    /**
      * Determine a slider type.
      **/
     public $type;
@@ -297,9 +305,9 @@ class Splide extends Widget
     {
         $this->registerClientScript();
         $html = Html::beginTag('div', [
-            'id' => $this->id,
-            'class'=> 'splide'
-        ]).PHP_EOL;
+                'id' => $this->id,
+                'class' => 'splide'
+            ]) . PHP_EOL;
 
         $html .= $this->renderItems();
         $html .= Html::endTag('div');
@@ -368,7 +376,12 @@ class Splide extends Widget
             return !is_null($value);
         });
         $options = Json::encode($paramsWithValue);
-        $this->getView()->registerJs("let splide{$this->id} = new Splide('#{$this->id}',$options).mount();");
+        $link = "";
+        if (!empty($this->syncWith))
+            $link = ".sync({$this->syncWith})";
+
+        $mount = $this->mount ? ".mount()" : "";
+        $this->getView()->registerJs("let {$this->id} = new Splide('#{$this->id}',$options){$link}{$mount}");
     }
 
     /**
@@ -382,7 +395,7 @@ class Splide extends Widget
 
         foreach ($this->items as $item) {
 
-            $html .= Html::tag('li', $this->renderItem($item), ['class' => 'splide__slide']).PHP_EOL;
+            $html .= Html::tag('li', $this->renderItem($item), ['class' => 'splide__slide']) . PHP_EOL;
 
         }
 

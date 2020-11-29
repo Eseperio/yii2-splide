@@ -36,7 +36,13 @@ echo Splide::widget([
 
 All options of Splide can be defined through widget properties
 
+### Properties of widget only
+|Property|Description|
+|--------|-----------|
+|syncWith|Used to link sliders. Set with the id of the splide you want to link. See Splide sliders linking|
+|mount|Defaults to `true`. Whether call mount on slider. 
 
+### Properties from Splidejs
 |Property|Description|
 |--------|-----------|
 |**type**|Determine a slider type.|
