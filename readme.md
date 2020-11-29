@@ -26,7 +26,7 @@ Using composer:
 There are two widgets. The former, a simple Splide slide, while the latter is a combination of two Splide slider for creating
 a carousel with thumbnail navigation (See [thumbnail slider](https://splidejs.com/thumbnail-slider/))
 
-    Video and grid not yet supported in current version of the wapper.
+    Video and grid not yet supported in current version of the wrapper.
 ```PHP
 echo Splide::widget([
     'items' => [
@@ -37,11 +37,6 @@ echo Splide::widget([
                        'url' => ['some/yii2urlformat', 'param1' => 'example']
                    ],
                    [
-                       'type'=> Splide::TYPE_VIDEO,
-                       'url'=> 'http://youtube.com/xxxxxxxx',
-                       'poster'=> 'http://posterurl' // Optional. Can be in yii2 url format
-                   ],
-                    [
                        'type'=> Splide::TYPE_HTML,
                        'html'=> 'htmlcodegoeshere',
                    ]
