@@ -1,4 +1,4 @@
-# Yii2-splide
+# Yii2-Splide
  
 A yii2 wrapper for [SplideJs slider](https://github.com/Splidejs/splide).
 
