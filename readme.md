@@ -61,7 +61,8 @@ All options of Splide can be defined through widget properties
 |Property|Description|
 |--------|-----------|
 |syncWith|Used to link sliders. Set with the id of the splide you want to link. See Splide sliders linking|
-|mount|Defaults to `true`. Whether call mount on slider. 
+|mount|Defaults to `true`. Whether call mount on slider.
+|containerOptions|Html options for the slider container tag| 
 
 ### Properties from Splidejs
 |Property|Description|

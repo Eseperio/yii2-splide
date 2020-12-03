@@ -296,6 +296,10 @@ class Splide extends Widget
      * Collection of texts for i18n.
      **/
     public $i18n;
+    /**
+     * @var array options for slider main container
+     */
+    public $containerOptions = [];
 
     /**
      * @return string
@@ -390,7 +394,8 @@ class Splide extends Widget
      */
     private function renderItems()
     {
-        $html = Html::beginTag('div', ['class' => 'splide__track']) . PHP_EOL;
+        Html::addCssClass($this->containerOptions, 'splide__track');
+        $html = Html::beginTag('div', $this->containerOptions) . PHP_EOL;
         $html .= Html::beginTag('ul', ['class' => 'splide__list']) . PHP_EOL;
 
         foreach ($this->items as $item) {
