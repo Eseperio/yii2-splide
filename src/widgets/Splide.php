@@ -308,10 +308,11 @@ class Splide extends Widget
     public function run()
     {
         $this->registerClientScript();
-        $html = Html::beginTag('div', [
-                'id' => $this->id,
-                'class' => 'splide'
-            ]) . PHP_EOL;
+        Html::addCssClass($this->containerOptions,'splide');
+        $containerOptions = array_merge_recursive($this->containerOptions, [
+            'id' => $this->id,
+        ]);
+        $html = Html::beginTag('div', $containerOptions) . PHP_EOL;
 
         $html .= $this->renderItems();
         $html .= Html::endTag('div');
@@ -394,8 +395,7 @@ class Splide extends Widget
      */
     private function renderItems()
     {
-        Html::addCssClass($this->containerOptions, 'splide__track');
-        $html = Html::beginTag('div', $this->containerOptions) . PHP_EOL;
+        $html = Html::beginTag('div', ['class' => 'splide__track']) . PHP_EOL;
         $html .= Html::beginTag('ul', ['class' => 'splide__list']) . PHP_EOL;
 
         foreach ($this->items as $item) {

@@ -29,25 +29,11 @@ class SplideThumbnailCarousel extends Widget
     /**
      * @var array
      */
-    public $mainSliderConfig = [
-        'pagination' => false,
-        'arrows' => false,
-        'heightRatio' => 0.66666667,
-        'cover'=> true
-    ];
+    public $mainSliderConfig = [];
     /**
      * @var array
      */
-    public $thumbnailSliderConfig = [
-        'fixedWidth' => 100,
-        'height' => 60,
-        'gap' => 10,
-        'cover' => true,
-        'isNavigation' => true,
-        'focus' => 'center',
-        'rewind' => true,
-        'pagination' => false
-    ];
+    public $thumbnailSliderConfig = [];
     private $mainSliderHtml = "";
     private $thumbnailSliderHtml = "";
 
@@ -55,9 +41,27 @@ class SplideThumbnailCarousel extends Widget
     {
 
         $mainSliderId = $this->id . "_main";
-        $this->mainSliderConfig['id'] = $mainSliderId;
+        $this->mainSliderConfig= array_merge_recursive($this->mainSliderConfig,[
+            'pagination' => false,
+            'arrows' => false,
+            'heightRatio' => 0.66666667,
+            'cover'=> true,
+            'id'=> $mainSliderId
+        ]);
+
         $secondarySliderId = $this->id . "_secondary";
-        $this->thumbnailSliderConfig['id'] = $secondarySliderId;
+
+        $this->thumbnailSliderConfig= array_merge_recursive($this->thumbnailSliderConfig,[
+            'fixedWidth' => 100,
+            'height' => 60,
+            'gap' => 10,
+            'cover' => true,
+            'isNavigation' => true,
+            'focus' => 'center',
+            'rewind' => true,
+            'pagination' => false,
+            'id'=> $secondarySliderId
+        ]);
 
         $this->mainSliderConfig['syncWith'] = $secondarySliderId;
         $this->mainSliderConfig['items'] = $this->thumbnailSliderConfig['items'] = $this->items;
