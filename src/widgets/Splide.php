@@ -386,7 +386,7 @@ class Splide extends Widget
             $link = ".sync({$this->syncWith})";
 
         $mount = $this->mount ? ".mount()" : "";
-        $this->getView()->registerJs("let {$this->id} = new Splide('#{$this->id}',$options){$link}{$mount}");
+        $this->getView()->registerJs("var {$this->id} = new Splide('#{$this->id}',$options){$link}{$mount}");
     }
 
     /**
