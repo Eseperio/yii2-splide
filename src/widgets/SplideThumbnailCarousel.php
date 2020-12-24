@@ -34,9 +34,19 @@ class SplideThumbnailCarousel extends Widget
      * @var array
      */
     public $thumbnailSliderConfig = [];
+    /**
+     * @var string
+     */
     private $mainSliderHtml = "";
+    /**
+     * @var string
+     */
     private $thumbnailSliderHtml = "";
 
+    /**
+     * @return string|string[]|null
+     * @throws \Exception
+     */
     public function run()
     {
 
@@ -82,6 +92,10 @@ class SplideThumbnailCarousel extends Widget
 
     }
 
+    /**
+     * @param $section
+     * @return string
+     */
     private function renderSection($section)
     {
 
@@ -95,11 +109,17 @@ class SplideThumbnailCarousel extends Widget
         }
     }
 
+    /**
+     * @return string
+     */
     private function renderMainSlider()
     {
         return $this->mainSliderHtml;
     }
 
+    /**
+     * @return string
+     */
     private function renderThumbnailSlider()
     {
         return $this->thumbnailSliderHtml;
