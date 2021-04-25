@@ -430,7 +430,7 @@ class Splide extends Widget
                     throw new NotSupportedException('Grid in slider is not yet supported by yii2-splide wrapper.');
                     break;
                 case self::TYPE_HTML:
-                    return $item->html;
+                    return $item['html'];
                     break;
             }
         }
