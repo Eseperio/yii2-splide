@@ -26,6 +26,14 @@ class Splide extends Widget
     const TYPE_GRID = 3;
     const TYPE_HTML = 4;
     public static $autoIdPrefix = 'splide';
+
+    /**
+     * List of events to be attached to slider
+     * @var array
+     */
+    public $clientEvents = [];
+
+
     /**
      * Colecction of items to be rendered.
      * ```PHP
@@ -308,6 +316,7 @@ class Splide extends Widget
     public function run()
     {
         $this->registerClientScript();
+        $this->registerClientEvents();
         Html::addCssClass($this->containerOptions,'splide');
         $containerOptions = array_merge_recursive($this->containerOptions, [
             'id' => $this->id,
@@ -387,6 +396,21 @@ class Splide extends Widget
 
         $mount = $this->mount ? ".mount()" : "";
         $this->getView()->registerJs("var {$this->id} = new Splide('#{$this->id}',$options){$link}{$mount}");
+    }
+
+    /**
+     * Registers JS event handlers that are listed in [[clientEvents]].
+     * @since 2.0.2
+     */
+    protected function registerClientEvents()
+    {
+        if (!empty($this->clientEvents)) {
+            $js = [];
+            foreach ($this->clientEvents as $event => $handler) {
+                $js[] = $this->id.".on('$event', $handler);";
+            }
+            $this->getView()->registerJs(implode("\n", $js));
+        }
     }
 
     /**
