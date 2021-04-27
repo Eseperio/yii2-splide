@@ -53,6 +53,12 @@ echo \eseperio\splide\widgets\SplideThumbnailCarousel::widget([
                 ]);
 ```
 
+### Changelog
+|Semver|Changes|
+|------|-------|
+|1.0.0|First release|
+|1.1.0|Added clientEvents|
+
 ### Options
 
 All options of Splide can be defined through widget properties
@@ -60,9 +66,10 @@ All options of Splide can be defined through widget properties
 ### Properties of widget only
 |Property|Description|
 |--------|-----------|
-|syncWith|Used to link sliders. Set with the id of the splide you want to link. See Splide sliders linking|
+|syncWith|Used to link sliders. Set the id of the splide you want to link. See Splide sliders linking docs in|
 |mount|Defaults to `true`. Whether call mount on slider.
 |containerOptions|Html options for the slider container tag| 
+|clientEvents| Associative array of events for client side.  `eventName => handler()` [See SplideJS Events](https://splidejs.com/events/)| 
 
 ### Properties from Splidejs
 |Property|Description|
